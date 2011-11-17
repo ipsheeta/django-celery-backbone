@@ -5,8 +5,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'testproject.views.home', name='home'),
-    # url(r'^testproject/', include('testproject.foo.urls')),
+    url(r'^tasks/', include('celery_backbone.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
