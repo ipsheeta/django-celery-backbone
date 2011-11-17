@@ -3,6 +3,16 @@ django-celery-backbone
 
 An Django app to demonstrate integration between Celery and Backbone.js.
 
+This does not yet do anything useful - it just modifies the standard djcelery
+TaskState admin view, so that it uses Backbone.js to populate the list of
+tasks.
+
+See testproject/celery_backbone/static/js/celery_backbone.js and
+testproject/celery_backbone/templates/task_status.html for example usage.
+
+In future I plan to add more useful features to the Backbone.js classes, e.g.
+polling for task status, call events when tasks succeed/fail, etc.
+
 
 Getting started
 ---------------
