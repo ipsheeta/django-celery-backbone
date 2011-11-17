@@ -25,9 +25,9 @@ Run the development server:
 
 Open the Task status page in a browser:
 
-    http://127.0.0.1/admin/djcelery/taskstate/
+    http://127.0.0.1:8080/admin/djcelery/taskstate/
 
-Create a task manually and make sure it is displayed in the admin page:
+Create a task manually and make sure it is displayed in the admin page::
 
     ./manage.py shell
     from celery_backbone.tasks import add
