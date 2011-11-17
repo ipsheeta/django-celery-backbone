@@ -1,7 +1,7 @@
 django-celery-backbone
 ======================
 
-An Django app to demonstrate integration between Celery and Backbone.js.
+A Django app to demonstrate integration between Celery and Backbone.js.
 
 This does not yet do anything useful - it just modifies the standard djcelery
 TaskState admin view, so that it uses Backbone.js to populate the list of
