@@ -3,5 +3,30 @@
 
 {% block extrahead %}
     <script src="{{ STATIC_URL }}js/jquery-1.7.min.js"></script>
-    <script src="{{ STATIC_URL }}js/backbone-0.5.3.min.js"></script>
+    <script src="{{ STATIC_URL }}js/underscore-1.2.2.js"></script>
+    <script src="{{ STATIC_URL }}js/backbone-0.5.3.js"></script>
+    <script src="{{ STATIC_URL }}js/celery_backbone.js"></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            //console.log($('#task-template').html());
+            var app = new AppView();
+            app.fetchTasks();
+        });
+    </script>
+
+    <script type='text/template' id='task-template'>
+        <td class="action-checkbox">
+          <input type="checkbox" name="_selected_action" value="<%= id %>" class="action-select">
+        </td>
+        <th><%= task_id %></th>
+        <td><%= state %></td>
+        <td><%= name %></td>
+        <td><%= args %></td>
+        <td><%= kwargs %></td>
+        <td><%= eta %></td>
+        <td><%= tstamp %></td>
+        <td><%= worker %></td>
+    </script>
+
+
 {% endblock extrahead %}
