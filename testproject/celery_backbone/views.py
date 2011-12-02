@@ -4,6 +4,10 @@ from django.template import RequestContext
 from django.core.serializers import serialize
 from djcelery.models import TaskState
 
+from django.views.generic import TemplateView
+
+class TestPage(TemplateView):
+    template_name = 'test_page.html'
 
 def task_status(request):
     return render_to_response('task_status.html',
