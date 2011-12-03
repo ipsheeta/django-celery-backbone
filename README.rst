@@ -1,11 +1,11 @@
 backbone.celery.js
 ======================
 
-A Backbone.js_ plugin for Celery_. I am still working on this, it is not 
+A `Backbone.js`_ plugin for `Celery`_. I am still working on this, it is not 
 entirely useful yet. Ideas and suggestions are very welcome.
 
-.. _Backbone.js http://documentcloud.github.com/backbone/
-.. _Celery http://celeryproject.org/
+.. _`Backbone.js` : http://documentcloud.github.com/backbone/
+.. _`Celery` : http://celeryproject.org/
 
 Create individual tasks and bind to their events::
 
