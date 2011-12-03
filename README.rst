@@ -1,17 +1,38 @@
-django-celery-backbone
+backbone.celery.js
 ======================
 
-A Django app to demonstrate integration between Celery and Backbone.js.
+A Backbone.js_ plugin for Celery_. I am still working on this, it is not 
+entirely useful yet. Ideas and suggestions are very welcome.
 
-This does not yet do anything useful - it just modifies the standard djcelery
-TaskState admin view, so that it uses Backbone.js to populate the list of
-tasks.
+.. _Backbone.js http://documentcloud.github.com/backbone/
+.. _Celery http://celeryproject.org/
 
-See testproject/celery_backbone/static/js/celery_backbone.js and
-testproject/celery_backbone/templates/task_status.html for example usage.
+Create individual tasks and bind to their events::
 
-In future I plan to add more useful features to the Backbone.js classes, e.g.
-polling for task status, call events when tasks succeed/fail, etc.
+    var task = new CeleryTask({
+        id: '785ba181-4c8b-4b35-a6c4-f47ad6b8d11a'
+    },
+    {
+        interval: 5000,
+        autoPoll: true
+    });
+    task.bind('task_SUCCESS', taskSucceeded);
+    task.bind('task_FAILED', taskFailed);
+
+Or create task collections and deal with tasks as groups::
+    
+    var tasks = new CeleryTasks();
+    tasks.add({id: '...'});
+    tasks.add({id: '...'});
+    tasks.pollAll();
+
+This repo includes a demonstration Django project so the plugin has
+something to query. The demonstration task (which takes no args yet) will
+return 3 after sleeping for 5 seconds.
+
+There is also a very simple Backbone.js app, which shows how the
+Model/Collection can be used, and how to automatically update a Backbone
+view to display the latest results from a task.
 
 
 Getting started
@@ -22,7 +43,7 @@ Download the app, syncdb etc.
 
 Start celerycam (so Task information is stored in the database):
 
-    ./python manage.py celerycam
+    ./manage.py celerycam
 
 Start celeryd (-E tells celeryd to send events, which are picked up by 
 celerycam:
@@ -33,13 +54,8 @@ Run the development server:
 
     ./manage.py runserver 127.0.0.1:8080
 
-Open the Task status page in a browser:
+Open the test page in a browser:
 
-    http://127.0.0.1:8080/admin/djcelery/taskstate/
+    http://127.0.0.1:8080/tasks/app/
 
-Create a task manually and make sure it is displayed in the admin page::
-
-    ./manage.py shell
-    from celery_backbone.tasks import add
-    result = add.delay(1,2)
-    result.get()
+Click 'New task' to create a new task which will be automatically polled.

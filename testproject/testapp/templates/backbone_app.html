@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src='{{ STATIC_URL }}js/jquery-1.7.min.js'></script>
+    <script src='{{ STATIC_URL }}js/underscore-1.2.2.js'></script>
+    <script src='{{ STATIC_URL }}js/backbone-0.5.3.js'></script>
+    <script src='{{ STATIC_URL }}js/backbone.celery.js'></script>
+    <script src='{{ STATIC_URL }}js/testapp.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            // Create the App
+            window.celeryApp = new CeleryApp();
+        });
+    </script>
+  </head>
+  <body>
+    <h2>Backbone.js Celery app</h2>
+    <h3>Task collections</h3>
+<script type="text/plain" src="" id="taskTemplate">
+<td><%= id %></td><td><%= status %></td><td> task type</td><td><%= result %></td>
+</script>
+
+  <div id="taskApp">
+    <input id="addTask" type="submit" value="New task">
+    <input id="startPolling" type="submit" value="Start polling">
+    <input id="stopPolling" type="submit" value="Stop polling">
+    <table id="tasks">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Status</td>
+          <td>Task</td>
+          <td>Result</td>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+        
+  </body>
+</html>
