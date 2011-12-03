@@ -34,7 +34,7 @@ var CeleryApp = Backbone.View.extend({
     },
     createTask: function() {
         // dummy function - just calls createTask on the collection.
-        this.tasks.createTask(opts);
+        this.tasks.createTask();
     },
     startPolling: function() {
         this.tasks.startPolling();
